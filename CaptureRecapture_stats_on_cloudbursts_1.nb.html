@@ -218,32 +218,58 @@ pre code {
 <p>We know of the rate or numbe rof cloudbursts in Denmark only from the observation stationnetwork. Many cloudbursts must be ocurring without being observed. Can we use the Capture recapture method to estimate the actual number of cloudbursts?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0obGlzdD1scygpKVxubGlicmFyeShSY2FwdHVyZSlcbmBgYCJ9 -->
-<pre class="r"><code>rm(list=ls())
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxucm0obGlzdD1scygpKVxubGlicmFyeShSY2FwdHVyZSlcbmBgYFxuYGBgIn0= -->
+<pre class="r"><code>```r
+rm(list=ls())
 library(Rcapture)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<div id="set-up-cb-data" class="section level1">
-<h1>Set up CB-data</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYgPC0gcmVhZFJEUyhcIi4uL0Vrc3RyZW1SZWduL09VVFBVVC9qb2luZWRfdXBfZGF0YV9TVktSUDEucmRzXCIpXG5yb3duYW1lcyhkZikgPC0gTlVMTFxuZGljb3QgPC0gZGZbLDZdXG5uIDwtIGxlbmd0aChkaWNvdClcbmNhcHR1cmUgPC0gY2JpbmQuZGF0YS5mcmFtZSgoMTpuKSxkaWNvdClcbmBgYCJ9 -->
-<pre class="r"><code>df &lt;- readRDS(&quot;../EkstremRegn/OUTPUT/joined_up_data_SVKRP1.rds&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+# Set up CB-data
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZGYgPC0gcmVhZFJEUyhcXC4uL0Vrc3RyZW1SZWduL09VVFBVVC9qb2luZWRfdXBfZGF0YV9TVktSUDEucmRzXFwpXG5yb3duYW1lcyhkZikgPC0gTlVMTFxuZGljb3QgPC0gZGZbLDZdXG5uIDwtIGxlbmd0aChkaWNvdClcbmNhcHR1cmUgPC0gY2JpbmQuZGF0YS5mcmFtZSgoMTpuKSxkaWNvdClcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+df &lt;- readRDS(\../EkstremRegn/OUTPUT/joined_up_data_SVKRP1.rds\)
 rownames(df) &lt;- NULL
 dicot &lt;- df[,6]
 n &lt;- length(dicot)
 capture &lt;- cbind.data.frame((1:n),dicot)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="some-capture-release-recapture-cycles" class="section level1">
-<h1>some Capture Release Recapture cycles</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmN5Y2xlcyA8LSA0XG5mb3IgKGljeWMgaW4gMTpuY3ljbGVzKXsgIGNhcHR1cmUgPC0gY2JpbmQoY2FwdHVyZSwoKDE6bikqMCkpfVxubmNhcHR1cmUgPC0gbi8xNlxuZm9yIChpY3ljbGUgaW4gMTpuY3ljbGVzKVxue1xuICAjIGNhcHR1cmUgcG9pbnRlcnNcbiAgaWR4IDwtIHNhbXBsZSgxOm4sbmNhcHR1cmUscmVwbGFjZT1GQUxTRSlcbiAgY2F1Z2h0MXMgPC0gaWR4W3doaWNoKGNhcHR1cmVbaWR4LDJdID09IDEpXVxuICAjIG1hcmsgdGhlbVxuICBjYXB0dXJlW2NhdWdodDFzLDIraWN5Y2xlXSA8LSAxXG59XG4jIGNvbGxlY3QgdGhvc2UgdGhhdCBhcmUgdHJ1bHkgMXNcbmNhcHR1cmVfaGlzdG9yeSA8LSBjYXB0dXJlW3doaWNoKGNhcHR1cmVbLDJdID09IDEpLDM6Nl1cbnJvd25hbWVzKGNhcHR1cmVfaGlzdG9yeSkgPC0gTlVMTFxuY29sbmFtZXMoY2FwdHVyZV9oaXN0b3J5KSA8LSBjKFwiYzFcIixcImMyXCIsXCJjM1wiLFwiYzRcIilcbmBgYCJ9 -->
-<pre class="r"><code>ncycles &lt;- 4
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+# some Capture Release Recapture cycles
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubmN5Y2xlcyA8LSA0XG5mb3IgKGljeWMgaW4gMTpuY3ljbGVzKXsgIGNhcHR1cmUgPC0gY2JpbmQoY2FwdHVyZSwoKDE6bikqMCkpfVxubmNhcHR1cmUgPC0gbi8xNlxuZm9yIChpY3ljbGUgaW4gMTpuY3ljbGVzKVxue1xuICAjIGNhcHR1cmUgcG9pbnRlcnNcbiAgaWR4IDwtIHNhbXBsZSgxOm4sbmNhcHR1cmUscmVwbGFjZT1GQUxTRSlcbiAgY2F1Z2h0MXMgPC0gaWR4W3doaWNoKGNhcHR1cmVbaWR4LDJdID09IDEpXVxuICAjIG1hcmsgdGhlbVxuICBjYXB0dXJlW2NhdWdodDFzLDIraWN5Y2xlXSA8LSAxXG59XG4jIGNvbGxlY3QgdGhvc2UgdGhhdCBhcmUgdHJ1bHkgMXNcbmNhcHR1cmVfaGlzdG9yeSA8LSBjYXB0dXJlW3doaWNoKGNhcHR1cmVbLDJdID09IDEpLDM6Nl1cbnJvd25hbWVzKGNhcHR1cmVfaGlzdG9yeSkgPC0gTlVMTFxuY29sbmFtZXMoY2FwdHVyZV9oaXN0b3J5KSA8LSBjKFxcYzFcXCxcXGMyXFwsXFxjM1xcLFxcYzRcXClcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+ncycles &lt;- 4
 for (icyc in 1:ncycles){  capture &lt;- cbind(capture,((1:n)*0))}
 ncapture &lt;- n/16
 for (icycle in 1:ncycles)
@@ -257,41 +283,44 @@ for (icycle in 1:ncycles)
 # collect those that are truly 1s
 capture_history &lt;- capture[which(capture[,2] == 1),3:6]
 rownames(capture_history) &lt;- NULL
-colnames(capture_history) &lt;- c(&quot;c1&quot;,&quot;c2&quot;,&quot;c3&quot;,&quot;c4&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="run-test" class="section level1">
-<h1>run test</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuWCA8LSBhcy5tYXRyaXgoY2FwdHVyZV9oaXN0b3J5KVxuZXggPC0gY2xvc2VkcChYKVxuZXgkcmVzdWx0c1xuYGBgIn0= -->
-<pre class="r"><code>X &lt;- as.matrix(capture_history)
+colnames(capture_history) &lt;- c(\c1\,\c2\,\c3\,\c4\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+# run test 
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuWCA8LSBhcy5tYXRyaXgoY2FwdHVyZV9oaXN0b3J5KVxuZXggPC0gY2xvc2VkcChYKVxuZXgkcmVzdWx0c1xuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+X &lt;- as.matrix(capture_history)
 ex &lt;- closedp(X)
 ex$results</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBhYnVuZGFuY2UgICAgc3RkZXJyIGRldmlhbmNlIGRmICAgICAgQUlDICAgICAgQklDIGluZm9GaXRcbk0wICAgICAgICAgICAgMTI0NC41OTM3ICAxODMuNDMyOCA5LjEwMDAyMiAxMyA2MC45MTE5MCA2OC40MzYwMCAgICAgICAwXG5NdCAgICAgICAgICAgIDEyNDEuNTEzMiAgMTgyLjg4ODEgNi4wOTkzNzUgMTAgNjMuOTExMjUgODIuNzIxNTEgICAgICAgMFxuTWggQ2hhbyAoTEIpICAxMjQ0LjU5MzcgIDE4My40MzI4IDkuMTAwMDIyIDEzIDYwLjkxMTkwIDY4LjQzNjAwICAgICAgIDBcbk1oIFBvaXNzb24yICAgIDk2OC43NzEzICA0MDAuMDk1MyA4LjY3MTQ4OSAxMiA2Mi40ODMzNyA3My43Njk1MiAgICAgICAwXG5NaCBEYXJyb2NoICAgICA3OTUuMzk5NSAgNTM0LjkzNjIgOC42NzY3OTkgMTIgNjIuNDg4NjggNzMuNzc0ODMgICAgICAgMFxuTWggR2FtbWEzLjUgICAgNjY2Ljk5MjMgIDU3My42OTY4IDguNjc5MDIzIDEyIDYyLjQ5MDkwIDczLjc3NzA2ICAgICAgIDFcbk10aCBDaGFvIChMQikgMTI0MS41MTMyICAxODIuODg4MSA2LjA5OTM3NSAxMCA2My45MTEyNSA4Mi43MjE1MSAgICAgICAwXG5NdGggUG9pc3NvbjIgICA5NjcuODA1OCAgMzk5LjQ4NTAgNS42NzU1MzUgIDkgNjUuNDg3NDEgODguMDU5NzIgICAgICAgMFxuTXRoIERhcnJvY2ggICAgNzk1LjQzODAgIDUzNC45NDA4IDUuNjgwODI2ICA5IDY1LjQ5MjcxIDg4LjA2NTAxICAgICAgIDBcbk10aCBHYW1tYTMuNSAgIDY2Ny41NzU1ICA1NzQuNjk2OCA1LjY4MzAzNyAgOSA2NS40OTQ5MiA4OC4wNjcyMyAgICAgICAxXG5NYiAgICAgICAgICAgICA4ODYuNDQ3MCAgMzIyLjA0ODcgOC41MTg5NTYgMTIgNjIuMzMwODQgNzMuNjE2OTkgICAgICAgMFxuTWJoICAgICAgICAgICAxNDE2LjA3NTUgMTYyNC4wOTAzIDcuOTM0MTkyIDExIDYzLjc0NjA3IDc4Ljc5NDI4ICAgICAgIDBcbiJ9 -->
-<pre><code>              abundance    stderr deviance df      AIC      BIC infoFit
-M0            1244.5937  183.4328 9.100022 13 60.91190 68.43600       0
-Mt            1241.5132  182.8881 6.099375 10 63.91125 82.72151       0
-Mh Chao (LB)  1244.5937  183.4328 9.100022 13 60.91190 68.43600       0
-Mh Poisson2    968.7713  400.0953 8.671489 12 62.48337 73.76952       0
-Mh Darroch     795.3995  534.9362 8.676799 12 62.48868 73.77483       0
-Mh Gamma3.5    666.9923  573.6968 8.679023 12 62.49090 73.77706       1
-Mth Chao (LB) 1241.5132  182.8881 6.099375 10 63.91125 82.72151       0
-Mth Poisson2   967.8058  399.4850 5.675535  9 65.48741 88.05972       0
-Mth Darroch    795.4380  534.9408 5.680826  9 65.49271 88.06501       0
-Mth Gamma3.5   667.5755  574.6968 5.683037  9 65.49492 88.06723       1
-Mb             886.4470  322.0487 8.518956 12 62.33084 73.61699       0
-Mbh           1416.0755 1624.0903 7.934192 11 63.74607 78.79428       0</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBhYnVuZGFuY2UgICAgc3RkZXJyIGRldmlhbmNlIGRmICAgICAgQUlDICAgICAgQklDIGluZm9GaXRcbk0wICAgICAgICAgICAgMTI0NC41OTM3ICAxODMuNDMyOCA5LjEwMDAyMiAxMyA2MC45MTE5MCA2OC40MzYwMCAgICAgICAwXG5NdCAgICAgICAgICAgIDEyNDEuNTEzMiAgMTgyLjg4ODEgNi4wOTkzNzUgMTAgNjMuOTExMjUgODIuNzIxNTEgICAgICAgMFxuTWggQ2hhbyAoTEIpICAxMjQ0LjU5MzcgIDE4My40MzI4IDkuMTAwMDIyIDEzIDYwLjkxMTkwIDY4LjQzNjAwICAgICAgIDBcbk1oIFBvaXNzb24yICAgIDk2OC43NzEzICA0MDAuMDk1MyA4LjY3MTQ4OSAxMiA2Mi40ODMzNyA3My43Njk1MiAgICAgICAwXG5NaCBEYXJyb2NoICAgICA3OTUuMzk5NSAgNTM0LjkzNjIgOC42NzY3OTkgMTIgNjIuNDg4NjggNzMuNzc0ODMgICAgICAgMFxuTWggR2FtbWEzLjUgICAgNjY2Ljk5MjMgIDU3My42OTY4IDguNjc5MDIzIDEyIDYyLjQ5MDkwIDczLjc3NzA2ICAgICAgIDFcbk10aCBDaGFvIChMQikgMTI0MS41MTMyICAxODIuODg4MSA2LjA5OTM3NSAxMCA2My45MTEyNSA4Mi43MjE1MSAgICAgICAwXG5NdGggUG9pc3NvbjIgICA5NjcuODA1OCAgMzk5LjQ4NTAgNS42NzU1MzUgIDkgNjUuNDg3NDEgODguMDU5NzIgICAgICAgMFxuTXRoIERhcnJvY2ggICAgNzk1LjQzODAgIDUzNC45NDA4IDUuNjgwODI2ICA5IDY1LjQ5MjcxIDg4LjA2NTAxICAgICAgIDBcbk10aCBHYW1tYTMuNSAgIDY2Ny41NzU1ICA1NzQuNjk2OCA1LjY4MzAzNyAgOSA2NS40OTQ5MiA4OC4wNjcyMyAgICAgICAxXG5NYiAgICAgICAgICAgICA4ODYuNDQ3MCAgMzIyLjA0ODcgOC41MTg5NTYgMTIgNjIuMzMwODQgNzMuNjE2OTkgICAgICAgMFxuTWJoICAgICAgICAgICAxNDE2LjA3NTUgMTYyNC4wOTAzIDcuOTM0MTkyIDExIDYzLjc0NjA3IDc4Ljc5NDI4ICAgICAgIDBcbiJ9 --&gt;
+</code></pre>
+<pre><code>          abundance    stderr deviance df      AIC      BIC infoFit</code></pre>
+<p>M0 1244.5937 183.4328 9.100022 13 60.91190 68.43600 0 Mt 1241.5132 182.8881 6.099375 10 63.91125 82.72151 0 Mh Chao (LB) 1244.5937 183.4328 9.100022 13 60.91190 68.43600 0 Mh Poisson2 968.7713 400.0953 8.671489 12 62.48337 73.76952 0 Mh Darroch 795.3995 534.9362 8.676799 12 62.48868 73.77483 0 Mh Gamma3.5 666.9923 573.6968 8.679023 12 62.49090 73.77706 1 Mth Chao (LB) 1241.5132 182.8881 6.099375 10 63.91125 82.72151 0 Mth Poisson2 967.8058 399.4850 5.675535 9 65.48741 88.05972 0 Mth Darroch 795.4380 534.9408 5.680826 9 65.49271 88.06501 0 Mth Gamma3.5 667.5755 574.6968 5.683037 9 65.49492 88.06723 1 Mb 886.4470 322.0487 8.518956 12 62.33084 73.61699 0 Mbh 1416.0755 1624.0903 7.934192 11 63.74607 78.79428 0 ```</p>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
-</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRXN0aW1hdGUgbnVtYmVyIG9mIGNsb3VzYnVyc3RzIHdpdGggdGhlIENhcHR1cmUgUmVjYXB0dXJlIG1ldGhvZCIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKV2Uga25vdyBvZiB0aGUgcmF0ZSBvciBudW1iZSByb2YgY2xvdWRidXJzdHMgaW4gRGVubWFyayBvbmx5IGZyb20gdGhlIG9ic2VydmF0aW9uIHN0YXRpb25uZXR3b3JrLiBNYW55IGNsb3VkYnVyc3RzIG11c3QgYmUgb2N1cnJpbmcgd2l0aG91dCBiZWluZyBvYnNlcnZlZC4gQ2FuIHdlIHVzZSB0aGUgQ2FwdHVyZSByZWNhcHR1cmUgbWV0aG9kIHRvIGVzdGltYXRlIHRoZSBhY3R1YWwgbnVtYmVyIG9mIGNsb3VkYnVyc3RzPwoKYGBge3J9CnJtKGxpc3Q9bHMoKSkKbGlicmFyeShSY2FwdHVyZSkKYGBgCgojIFNldCB1cCBDQi1kYXRhCmBgYHtyfQpkZiA8LSByZWFkUkRTKCIuLi9Fa3N0cmVtUmVnbi9PVVRQVVQvam9pbmVkX3VwX2RhdGFfU1ZLUlAxLnJkcyIpCnJvd25hbWVzKGRmKSA8LSBOVUxMCmRpY290IDwtIGRmWyw2XQpuIDwtIGxlbmd0aChkaWNvdCkKY2FwdHVyZSA8LSBjYmluZC5kYXRhLmZyYW1lKCgxOm4pLGRpY290KQpgYGAKCiMgc29tZSBDYXB0dXJlIFJlbGVhc2UgUmVjYXB0dXJlIGN5Y2xlcwpgYGB7cn0KbmN5Y2xlcyA8LSA0CmZvciAoaWN5YyBpbiAxOm5jeWNsZXMpeyAgY2FwdHVyZSA8LSBjYmluZChjYXB0dXJlLCgoMTpuKSowKSl9Cm5jYXB0dXJlIDwtIG4vMTYKZm9yIChpY3ljbGUgaW4gMTpuY3ljbGVzKQp7CiAgIyBjYXB0dXJlIHBvaW50ZXJzCiAgaWR4IDwtIHNhbXBsZSgxOm4sbmNhcHR1cmUscmVwbGFjZT1GQUxTRSkKICBjYXVnaHQxcyA8LSBpZHhbd2hpY2goY2FwdHVyZVtpZHgsMl0gPT0gMSldCiAgIyBtYXJrIHRoZW0KICBjYXB0dXJlW2NhdWdodDFzLDIraWN5Y2xlXSA8LSAxCn0KIyBjb2xsZWN0IHRob3NlIHRoYXQgYXJlIHRydWx5IDFzCmNhcHR1cmVfaGlzdG9yeSA8LSBjYXB0dXJlW3doaWNoKGNhcHR1cmVbLDJdID09IDEpLDM6Nl0Kcm93bmFtZXMoY2FwdHVyZV9oaXN0b3J5KSA8LSBOVUxMCmNvbG5hbWVzKGNhcHR1cmVfaGlzdG9yeSkgPC0gYygiYzEiLCJjMiIsImMzIiwiYzQiKQpgYGAKCiMgcnVuIHRlc3QgCmBgYHtyfQpYIDwtIGFzLm1hdHJpeChjYXB0dXJlX2hpc3RvcnkpCmV4IDwtIGNsb3NlZHAoWCkKZXgkcmVzdWx0cwpgYGAKCgoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRXN0aW1hdGUgbnVtYmVyIG9mIGNsb3VzYnVyc3RzIHdpdGggdGhlIENhcHR1cmUgUmVjYXB0dXJlIG1ldGhvZCIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKV2Uga25vdyBvZiB0aGUgcmF0ZSBvciBudW1iZSByb2YgY2xvdWRidXJzdHMgaW4gRGVubWFyayBvbmx5IGZyb20gdGhlIG9ic2VydmF0aW9uIHN0YXRpb25uZXR3b3JrLiBNYW55IGNsb3VkYnVyc3RzIG11c3QgYmUgb2N1cnJpbmcgd2l0aG91dCBiZWluZyBvYnNlcnZlZC4gQ2FuIHdlIHVzZSB0aGUgQ2FwdHVyZSByZWNhcHR1cmUgbWV0aG9kIHRvIGVzdGltYXRlIHRoZSBhY3R1YWwgbnVtYmVyIG9mIGNsb3VkYnVyc3RzPwoKYGBge3J9CnJtKGxpc3Q9bHMoKSkKbGlicmFyeShSY2FwdHVyZSkKYGBgCgojIFNldCB1cCBDQi1kYXRhCmBgYHtyfQpkZiA8LSByZWFkUkRTKCIuLi9Fa3N0cmVtUmVnbi9PVVRQVVQvam9pbmVkX3VwX2RhdGFfU1ZLUlAxLnJkcyIpCnJvd25hbWVzKGRmKSA8LSBOVUxMCmRpY290IDwtIGRmWyw2XQpuIDwtIGxlbmd0aChkaWNvdCkKY2FwdHVyZSA8LSBjYmluZC5kYXRhLmZyYW1lKCgxOm4pLGRpY290KSAKYGBgCgojIHNvbWUgQ2FwdHVyZSBSZWxlYXNlIFJlY2FwdHVyZSBjeWNsZXMKYGBge3J9Cm5jeWNsZXMgPC0gNApmb3IgKGljeWMgaW4gMTpuY3ljbGVzKXsgIGNhcHR1cmUgPC0gY2JpbmQoY2FwdHVyZSwoKDE6bikqMCkpfQpuY2FwdHVyZSA8LSBuLzE2CmZvciAoaWN5Y2xlIGluIDE6bmN5Y2xlcykKewogICMgY2FwdHVyZSBwb2ludGVycwogIGlkeCA8LSBzYW1wbGUoMTpuLG5jYXB0dXJlLHJlcGxhY2U9RkFMU0UpCiAgY2F1Z2h0MXMgPC0gaWR4W3doaWNoKGNhcHR1cmVbaWR4LDJdID09IDEpXQogICMgbWFyayB0aGVtCiAgY2FwdHVyZVtjYXVnaHQxcywyK2ljeWNsZV0gPC0gMQp9CiMgY29sbGVjdCB0aG9zZSB0aGF0IGFyZSB0cnVseSAxcwpjYXB0dXJlX2hpc3RvcnkgPC0gY2FwdHVyZVt3aGljaChjYXB0dXJlWywyXSA9PSAxKSwzOjZdCnJvd25hbWVzKGNhcHR1cmVfaGlzdG9yeSkgPC0gTlVMTApjb2xuYW1lcyhjYXB0dXJlX2hpc3RvcnkpIDwtIGMoImMxIiwiYzIiLCJjMyIsImM0IikKYGBgCgojIHJ1biB0ZXN0IApgYGB7cn0KWCA8LSBhcy5tYXRyaXgoY2FwdHVyZV9oaXN0b3J5KQpleCA8LSBjbG9zZWRwKFgpCmV4JHJlc3VsdHMKYGBgCgoKCgo=</div>
 
 
 

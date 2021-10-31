@@ -16,7 +16,7 @@ df <- readRDS("../EkstremRegn/OUTPUT/joined_up_data_SVKRP1.rds")
 rownames(df) <- NULL
 dicot <- df[,6]
 n <- length(dicot)
-capture <- cbind.data.frame((1:n),dicot)
+capture <- cbind.data.frame((1:n),dicot) 
 ```
 
 # some Capture Release Recapture cycles
