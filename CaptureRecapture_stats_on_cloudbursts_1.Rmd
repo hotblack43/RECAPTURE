@@ -1,6 +1,8 @@
 ---
 title: "Estimate number of clousbursts with the Capture Recapture method"
-output: html_notebook
+output: 
+  pdf_document: 
+    fig_height: 8
 ---
 
 We know of the rate or numbe rof cloudbursts in Denmark only from the observation stationnetwork. Many cloudbursts must be ocurring without being observed. Can we use the Capture recapture method to estimate the actual number of cloudbursts?
@@ -8,43 +10,59 @@ We know of the rate or numbe rof cloudbursts in Denmark only from the observatio
 ```{r}
 rm(list=ls())
 library(Rcapture)
-```
+
 
 # Set up CB-data
-```{r}
-df <- readRDS("../EkstremRegn/OUTPUT/joined_up_data_SVKRP1.rds")
+df <- readRDS("../EkstremRegn/OUTPUT/joined_up_data_SVK.rds")
 rownames(df) <- NULL
 dicot <- df[,6]
 n <- length(dicot)
-capture <- cbind.data.frame((1:n),dicot) 
-```
-
-# some Capture Release Recapture cycles
-```{r}
+Nones <- length(which(dicot == 1))
 ncycles <- 4
-for (icyc in 1:ncycles){  capture <- cbind(capture,((1:n)*0))}
-ncapture <- n/16
-for (icycle in 1:ncycles)
-{
-  # capture pointers
-  idx <- sample(1:n,ncapture,replace=FALSE)
-  caught1s <- idx[which(capture[idx,2] == 1)]
-  # mark them
-  capture[caught1s,2+icycle] <- 1
+ 
+nMC <- 111
+tabellen <- NULL
+for (subdiv in seq(from=2,to=15,by=1)){
+  listen <- NULL
+  for (iMC in 1:nMC)
+  {
+    capture <- cbind.data.frame((1:n),dicot)
+    # some Capture Release Recapture cycles
+    for (icyc in 1:ncycles){  capture <- cbind(capture,((1:n)*0))}
+    ncapture <- n/subdiv
+    for (icycle in 1:ncycles)
+    {
+      # capture pointers
+      idx <- sample(1:n,ncapture,replace=FALSE)
+      caught1s <- idx[which(capture[idx,2] == 1)]
+      # mark them
+      capture[caught1s,2+icycle] <- 1
+    }
+    # collect those that are truly 1s
+    capture_history <- capture[which(capture[,2] == 1),3:6]
+    rownames(capture_history) <- NULL
+    colnames(capture_history) <- c("c1","c2","c3","c4")
+    
+    # run test 
+    X <- as.matrix(capture_history) 
+    ex <- closedp(X)
+    ex$results
+    
+    listen <- rbind(listen,c(ex$results[1,1],ex$results[1,2]))
+  }
+  hist(listen[,1], breaks=41, xlab="Estimated N", main="Capture-Release experiment on SVK cloudburst data",xlim=c(0,1000))
+  abline(v=Nones,col=2,lwd=3)
+  print(c(subdiv,median(listen[,1]),sd(listen[,1])))
+  tabellen <- rbind(tabellen,c(subdiv,median(listen[,1]),sd(listen[,1])))
 }
-# collect those that are truly 1s
-capture_history <- capture[which(capture[,2] == 1),3:6]
-rownames(capture_history) <- NULL
-colnames(capture_history) <- c("c1","c2","c3","c4")
 ```
 
-# run test 
+# plots
 ```{r}
-X <- as.matrix(capture_history)
-ex <- closedp(X)
-ex$results
+plot(tabellen[,c(1,2)],ylim=c(150,600),xlab="Fraction of data used",ylab="Estimated pop size",main="Mark-Release experiment on SVK cloudburst data")
+arrows(tabellen[,1],tabellen[,2]-tabellen[,3],tabellen[,1],tabellen[,2]+tabellen[,3],length=0.05, angle=90, code=3)
+abline(h=Nones,col=2,lwd=3)
 ```
-
 
 
 
