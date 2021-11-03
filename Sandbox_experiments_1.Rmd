@@ -1,0 +1,53 @@
+---
+title: "Sandbox 1"
+output: 
+  pdf_document: 
+    fig_height: 8
+---
+
+See if it ispossible to estimate the true population from samples taken from a single observations et.
+
+```{r}
+rm(list=ls())
+library(Rcapture)
+```
+
+# Build a 'true universe'
+```{r}
+nUni <- 10000
+r <- 0.05 # The rate at which something happens ("fraction of red balls among all balls")
+Uni <- (1:nUni)*0+1 # The members of the Universe are either red or white = 0 or 1
+idx <- sample(1:nUni,r*nUni) # assign the red balls
+Uni[idx] <- 0 # So, 0 is 'red', 1 is 'white'
+```
+
+# Now go observing and sample that universe
+```{r}
+nObserved <- nUni/10 # We sample 1/10th of the actual Universe, but do not know this!
+idx <- sample(1:nUni,nObserved)
+Observed <- Uni[idx]
+```
+
+# Now resample the sample, repeatedly
+```{r}
+nMC <- 1111
+nSmall <- nObserved/79
+frac <- NULL
+for (iMC in 1:nMC)
+{
+  jdx <- sample(1:length(Observed),nSmall)
+  SmallSample <- Observed[jdx]
+  frac <- c(frac,length(which(SmallSample == 0))/length(jdx))
+}
+plot(frac)
+abline(h=r,col=2,lwd=3)
+hist(frac,breaks=11)
+abline(v=r,col=2,lwd=3)
+medfrac <- median(frac)
+sd_frac <- sd(frac)
+print(c("Median fraction in resampled sample : ",medfrac))
+```
+
+
+
+ 
